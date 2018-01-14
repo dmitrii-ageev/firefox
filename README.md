@@ -3,7 +3,7 @@ Docker container to run Firefox - Free Web Browser
 
 # Usage
 ```
-docker run -d --rm --name firefox \
+docker run -d --rm --name firefox -h docker \
        --net="host" \
        -e DISPLAY=$DISPLAY \
        -v /tmp/.X11-unix:/tmp/.X11-unix \
