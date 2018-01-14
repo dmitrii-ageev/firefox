@@ -5,7 +5,7 @@ MAINTAINER Dmitrii Ageev <d.ageev@gmail.com>
 ENV UNAME developer
 ENV DEBIAN_FRONTEND noninteractive
 
-# Create a user
+# Create a user and add it to audio group
 RUN groupadd -g 1000 $UNAME
 RUN useradd -u 1000 -g 1000 -G audio -m $UNAME
 
