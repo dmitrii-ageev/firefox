@@ -1,0 +1,21 @@
+FROM ubuntu:14.04
+MAINTAINER Dmitrii Ageev <d.ageev@gmail.com>
+
+# Set environment variables
+ENV UNAME developer
+ENV DEBIAN_FRONTEND noninteractive
+
+# Create a user
+RUN groupadd -g 1000 $UNAME
+RUN useradd -u 1000 -g 1000 -G audio -m $UNAME
+
+# Install software package
+RUN apt update
+RUN apt install -y firefox firefox-locale-en pulseaudio-utils
+
+# Copy pulse audio settings
+COPY pulse-client.conf /etc/pulse/client.conf
+
+# Run a software piece as non-root user
+USER $UNAME
+CMD /usr/bin/firefox
