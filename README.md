@@ -21,4 +21,4 @@ GitHub Page: https://github.com/dmitrii-ageev/firefox
 Docker Hub Page: https://hub.docker.com/r/dmitriiageev/firefox
 
 # Note
-The image supports audio playback with two methods: ALSA (through /dev/snd hardware access) and PULSEAUDIO with a runtime dir mount.
+This docker image supports audio playback with two methods: ALSA (through /dev/snd hardware access) and PULSEAUDIO with a runtime dir mount.
