@@ -1,6 +1,6 @@
 #!/bin/bash
 docker run -d --rm --name firefox -h docker \
-       --net="host" \
+       --cpuset-cpus 0 --memory 2048mb --net host \
        -e DISPLAY=$DISPLAY \
        -v /tmp/.X11-unix:/tmp/.X11-unix \
        -v /etc/machine-id:/etc/machine-id \
