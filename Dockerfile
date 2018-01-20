@@ -14,7 +14,10 @@ RUN apt update
 RUN apt install -y firefox firefox-locale-en pulseaudio-utils
 
 # Copy pulse audio settings
-COPY pulse-client.conf /etc/pulse/client.conf
+COPY files/pulse-client.conf /etc/pulse/client.conf
+
+# Copy hosts file
+COPY files/hosts /etc/hosts
 
 # Run a software piece as non-root user
 USER $UNAME
