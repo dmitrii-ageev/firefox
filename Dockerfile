@@ -12,8 +12,8 @@ RUN useradd -u 1000 -g 1000 -G audio -m $UNAME
 # Install software package
 RUN apt update
 RUN apt install -y firefox firefox-locale-en pulseaudio-utils 
-RUN apt install -y chromium-codecs-ffmpeg-extra
-RUN mv -f /usr/lib/chromium-browser/* /usr/lib/
+#RUN apt install -y chromium-codecs-ffmpeg-extra
+#RUN mv -f /usr/lib/chromium-browser/* /usr/lib/
 
 # Copy pulse audio settings
 COPY files/pulse-client.conf /etc/pulse/client.conf
