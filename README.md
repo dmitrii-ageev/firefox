@@ -10,7 +10,7 @@ docker run -d --rm --name firefox -h docker \
        -v /etc/machine-id:/etc/machine-id \
        -v /dev/snd:/dev/snd \
        -v $XDG_RUNTIME_DIR/pulse:$XDG_RUNTIME_DIR/pulse \
-       -v $HOME/.cache:/home/developer/.cache \
+       -v $HOME/.cache/mozilla:/home/developer/.cache/mozilla \
        -v $HOME/.mozilla:/home/developer/.mozilla \
        -v $HOME/Downloads:/home/developer/Downlods \
        dmitriiageev/firefox
