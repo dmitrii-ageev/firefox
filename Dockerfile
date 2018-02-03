@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:trusty
 MAINTAINER Dmitrii Ageev <d.ageev@gmail.com>
 
 # Set environment variables
@@ -11,7 +11,8 @@ RUN useradd -u 1000 -g 1000 -G audio -m $UNAME
 
 # Install software package
 RUN apt update
-RUN apt install -y firefox firefox-locale-en pulseaudio-utils 
+RUN apt dist-upgrade -y
+RUN apt install -y firefox firefox-locale-en pulseaudio-utils
 
 # Copy pulse audio settings
 COPY files/pulse-client.conf /etc/pulse/client.conf
