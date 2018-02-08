@@ -39,7 +39,7 @@ prepare_docker_volume_parameters() {
 
   VOLUMES+=" --volume=${DOWNLOAD_DIR}:/home/${APP_USER}/Downloads"
   VOLUMES+=" --volume=${HOME}/.${APPLICATION}:/home/${APP_USER}/.${APPLICATION}"
-  for FOLDER in cache local config pki; do
+  for FOLDER in cache local config pki mozilla; do
     VOLUMES+=" --volume=${HOME}/.${APPLICATION}/.${FOLDER}:/home/${APP_USER}/.${FOLDER}"
   done
   VOLUMES+=" --volume=${XSOCK}:${XSOCK}"
