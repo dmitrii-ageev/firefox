@@ -1,25 +1,30 @@
 FROM debian:sid
 MAINTAINER Dmitrii Ageev <d.ageev@gmail.com>
 
-# Set environment variables
-ENV UNAME developer
-ENV DEBIAN_FRONTEND noninteractive
+# Set environment
+ENV APPLICATION "firefox"
+ENV EXECUTABLE "/usr/bin/firefox"
 
 # Install software package
 RUN apt update
-RUN apt dist-upgrade -y
-RUN apt install -y firefox firefox-l10n-en-gb libcanberra-gtk3-module packagekit-gtk3-module hunspell-en-gb pulseaudio-utils
+RUN apt install --no-install-recommends -y \
+    firefox \
+    firefox-l10n-en-gb \
+    libcanberra-gtk3-module \
+    packagekit-gtk3-module \
+    hunspell-en-gb \
+    pulseaudio-utils \
+    pavucontrol \
+    libcanberra-pulse \
+    sudo
 
-# Copy pulse audio settings
+# Copy scripts and pulse audio settings
+COPY files/wrapper /sbin/wrapper
+COPY files/entrypoint.sh /sbin/entrypoint.sh
 COPY files/pulse-client.conf /etc/pulse/client.conf
 
 # Copy hosts file
 COPY files/hosts /etc/hosts
 
-# Create a user and add it to audio group
-RUN groupadd -g 1000 $UNAME
-RUN useradd -u 1000 -g 1000 -G audio,video -m $UNAME
-
-# Run a software piece as non-root user
-USER $UNAME
-CMD /usr/bin/firefox
+# Proceed to the entry point
+ENTRYPOINT ["/sbin/entrypoint.sh"]
