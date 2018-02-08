@@ -14,8 +14,6 @@ RUN apt install --no-install-recommends -y \
     packagekit-gtk3-module \
     hunspell-en-gb \
     pulseaudio-utils \
-    pavucontrol \
-    libcanberra-pulse \
     sudo
 
 # Copy scripts and pulse audio settings
