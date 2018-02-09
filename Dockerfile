@@ -13,7 +13,8 @@ RUN apt install --no-install-recommends -t trusty-updates -y \
     firefox-mozsymbols \
     libcanberra-gtk3-module \
     packagekit-gtk3-module \
-    hunspell-en-gb \
+    hunspell-ru \
+    hunspell-en-us \
     pulseaudio-utils \
     sudo
 
