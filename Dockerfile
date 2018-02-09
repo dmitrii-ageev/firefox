@@ -1,4 +1,4 @@
-FROM debian:sid
+FROM ubuntu:trusty
 MAINTAINER Dmitrii Ageev <d.ageev@gmail.com>
 
 # Set environment
@@ -7,9 +7,10 @@ ENV EXECUTABLE "/usr/bin/firefox"
 
 # Install software package
 RUN apt update
-RUN apt install --no-install-recommends -y \
+RUN apt install --no-install-recommends -t trusty-updates -y \
     firefox \
-    firefox-l10n-en-gb \
+    firefox-locale-en \
+    firefox-mozsymbols \
     libcanberra-gtk3-module \
     packagekit-gtk3-module \
     hunspell-en-gb \
