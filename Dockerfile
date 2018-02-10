@@ -43,6 +43,7 @@ RUN apt install --no-install-recommends -t trusty-updates -y \
     libxrender1 \
     libxt6 \
     ffmpeg \
+    gstreamer0.10-ffmpeg \
     libcanberra-gtk3-module \
     packagekit-gtk3-module \
     hunspell-ru \
