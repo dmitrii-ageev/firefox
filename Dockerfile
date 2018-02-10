@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 MAINTAINER Dmitrii Ageev <d.ageev@gmail.com>
 
 # Set environment
@@ -10,11 +10,8 @@ ENV EXECUTABLE "/firefox/firefox"
 
 # Install software package
 RUN apt update
-RUN apt install -y software-properties-common
-RUN add-apt-repository -y ppa:mc3man/trusty-media
-RUN apt update
 RUN apt -y dist-upgrade
-RUN apt install --no-install-recommends -t trusty-updates -y \
+RUN apt install --no-install-recommends -t xenial-updates -y \
     lsb-release \
     libatk1.0-0 \
     libc6 \
@@ -42,11 +39,7 @@ RUN apt install --no-install-recommends -t trusty-updates -y \
     libxfixes3 \
     libxrender1 \
     libxt6 \
-    ffmpeg \
-    gstreamer0.10-ffmpeg \
-    gstreamer0.10-plugins-good \
-    gstreamer0.10-plugins-bad \
-    gstreamer0.10-plugins-ugly \
+    ubuntu-restricted-extras \
     libcanberra-gtk3-module \
     packagekit-gtk3-module \
     hunspell-ru \
