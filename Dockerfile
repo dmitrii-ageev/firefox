@@ -44,8 +44,9 @@ RUN apt install --no-install-recommends -t trusty-updates -y \
     libxt6 \
     ffmpeg \
     gstreamer0.10-ffmpeg \
-    gstreamer1.0-libav \
-    gstreamer1.0-fluendo-mp3 \
+    gstreamer0.10-plugins-good \
+    gstreamer0.10-plugins-bad \
+    gstreamer0.10-plugins-ugly \
     libcanberra-gtk3-module \
     packagekit-gtk3-module \
     hunspell-ru \
