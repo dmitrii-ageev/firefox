@@ -41,7 +41,6 @@ RUN apt install --no-install-recommends -t trusty-updates -y \
     libxt6 \
     ubuntu-restricted-extras \
     x264 \
-    x265 \
     gstreamer1.0-libav \
     gstreamer1.0-fluendo-mp3 \
     gstreamer1.0-pulseaudio \
