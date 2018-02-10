@@ -5,6 +5,10 @@ USER_UID=${USER_UID:-1000}
 USER_GID=${USER_GID:-1000}
 APP_USER=$(echo $APPLICATION|head -c 8)
 
+generate_machine_id() {
+  dd count=16 if=/dev/urandom 2>/dev/null |md5sum|sed 's/-//' > /etc/machine-id
+}
+
 install_application() {
   echo "Installing ${APPLICATION}..."
   install -m 0755 /sbin/wrapper /target/${APPLICATION}
@@ -65,6 +69,7 @@ case "$1" in
     install_application
     ;;
   *)
+    generate_machine_id
     create_user
     grant_access_to_video_devices
     launch_application
