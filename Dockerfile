@@ -10,6 +10,9 @@ ENV EXECUTABLE "/firefox/firefox"
 
 # Install software package
 RUN apt update
+RUN apt install -y software-properties-common
+RUN add-apt-repository -y ppa:mc3man/trusty-media
+RUN apt update
 RUN apt -y dist-upgrade
 RUN apt install --no-install-recommends -t trusty-updates -y \
     lsb-release \
@@ -39,6 +42,7 @@ RUN apt install --no-install-recommends -t trusty-updates -y \
     libxfixes3 \
     libxrender1 \
     libxt6 \
+    ffmpeg \
     libcanberra-gtk3-module \
     packagekit-gtk3-module \
     hunspell-ru \
@@ -52,7 +56,7 @@ RUN tar -xjf ${FILE}
 
 # Remove unwanted stuff
 RUN rm -f ${FILE}
-RUN apt purge -y --auto-remove curl
+RUN apt purge -y --auto-remove curl software-properties-common
 RUN rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 # Copy scripts and pulse audio settings
