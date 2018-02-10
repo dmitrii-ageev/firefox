@@ -3,7 +3,7 @@ MAINTAINER Dmitrii Ageev <d.ageev@gmail.com>
 
 # Set environment
 ENV APPLICATION "firefox"
-ENV VERSION "58.0.2"
+ENV VERSION "57.0.2"
 ENV FILE "firefox-${VERSION}.tar.bz2"
 ENV LINK "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${VERSION}/linux-x86_64/en-US/${FILE}"
 ENV EXECUTABLE "/firefox/firefox"
@@ -41,7 +41,6 @@ RUN apt install --no-install-recommends -t trusty-updates -y \
     libxt6 \
     ubuntu-restricted-extras \
     x264 \
-    x265 \
     gstreamer1.0-libav \
     gstreamer1.0-fluendo-mp3 \
     gstreamer1.0-pulseaudio \
