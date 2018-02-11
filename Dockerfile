@@ -39,7 +39,6 @@ RUN apt install --no-install-recommends -t trusty-updates -y \
     libxfixes3 \
     libxrender1 \
     libxt6 \
-    ubuntu-restricted-extras \
     x264 \
     gstreamer1.0-libav \
     gstreamer1.0-fluendo-mp3 \
