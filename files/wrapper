@@ -1,5 +1,9 @@
 #!/bin/bash
-APPLICATION=$(basename $0)
+EXECUTABLE=$(basename $0)
+APPLICATION=$(echo ${EXECUTABLE}|cut -d- -f1)
+VERSION=$(echo ${EXECUTABLE}|cut -s -d- -f2)
+VERSION=${VERSION:-'latest'}
+
 APP_USER=${APPLICATION}
 PATH=/usr/sbin:/usr/bin:/sbin:/bin
 
@@ -20,7 +24,7 @@ fi;
 list_commands() {
   echo ""
   echo "Launch ${APPLICATION} using:"
-  echo "  ${APPLICATION} command"
+  echo "  ${EXECUTABLE} command"
   echo ""
   exit 1
 }
@@ -71,12 +75,12 @@ prepare_docker_env_parameters
 prepare_docker_volume_parameters
 prepare_docker_device_parameters
 
-echo "Starting ${APPLICATION}..."
+echo "Starting ${APPLICATION} (${VERSION})..."
 ${SUDO} docker run -d --rm \
   --name ${APPLICATION} -h docker \
   --cpuset-cpus 0 --memory 2048mb --net host \
   ${ENV_VARS} \
   ${VIDEO_DEVICES} \
   ${VOLUMES} \
-  dmitriiageev/${APPLICATION} >/dev/null
+  dmitriiageev/${APPLICATION}:${VERSION} >/dev/null
 

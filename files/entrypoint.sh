@@ -10,14 +10,16 @@ generate_machine_id() {
 }
 
 install_application() {
-  echo "Installing ${APPLICATION}..."
-  install -m 0755 /sbin/wrapper /target/${APPLICATION}
-  chown ${USER_UID}:${USER_GID} /target/${APPLICATION}
+  echo "Installing ${APPLICATION} (${VERSION})..."
+  install -m 0755 /sbin/wrapper /target/${APPLICATION}-${VERSION}
+  chown ${USER_UID}:${USER_GID} /target/${APPLICATION}-${VERSION}
+  ln -sf /target/${APPLICATION}-${VERSION} /target/${APPLICATION}
 }
 
 uninstall_application() {
-  echo "Uninstalling ${APPLICATION}..."
-  rm -rf /target/${APPLICATION}
+  echo "Uninstalling ${APPLICATION} (${VERSION})..."
+  unlink /target/${APPLICATION}
+  rm -f /target/${APPLICATION}-${VERSION}
 }
 
 create_user() {
