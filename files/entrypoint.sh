@@ -12,8 +12,9 @@ generate_machine_id() {
 install_application() {
   echo "Installing ${APPLICATION} (${VERSION})..."
   install -m 0755 /sbin/wrapper /target/${APPLICATION}-${VERSION}
-  chown ${USER_UID}:${USER_GID} /target/${APPLICATION}-${VERSION}
   ln -sf /target/${APPLICATION}-${VERSION} /target/${APPLICATION}
+  chown ${USER_UID}:${USER_GID} /target/${APPLICATION}-${VERSION}
+  chown ${USER_UID}:${USER_GID} /target/${APPLICATION}
 }
 
 uninstall_application() {
