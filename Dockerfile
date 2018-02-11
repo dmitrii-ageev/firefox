@@ -5,7 +5,7 @@ MAINTAINER Dmitrii Ageev <d.ageev@gmail.com>
 ENV APPLICATION "firefox"
 ENV VERSION "58.0.2"
 ENV FILE "firefox-${VERSION}.tar.bz2"
-ENV LINK "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${VERSION}/linux-x86_64/en-US/${FILE}"
+ENV LINK "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${VERSION}/linux-x86_64/en-GB/${FILE}"
 ENV EXECUTABLE "/firefox/firefox"
 
 # Install software package
@@ -65,7 +65,7 @@ RUN tar -xjf ${FILE}
 
 # Remove unwanted stuff
 RUN rm -f ${FILE}
-RUN apt purge -y --auto-remove software-properties-common curl bzip2
+RUN apt purge -y --auto-remove curl bzip2
 RUN rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 # Copy scripts and pulse audio settings
