@@ -82,5 +82,4 @@ ${SUDO} docker run -d --rm \
   ${ENV_VARS} \
   ${VIDEO_DEVICES} \
   ${VOLUMES} \
-  dmitriiageev/${APPLICATION}:${VERSION} >/dev/null
-
+  dmitriiageev/${APPLICATION}:${VERSION} $@ >/dev/null

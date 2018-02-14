@@ -4,6 +4,7 @@ set -e
 USER_UID=${USER_UID:-1000}
 USER_GID=${USER_GID:-1000}
 APP_USER=$(echo $APPLICATION|head -c 8)
+VERSION=${VERSION:-'latest'}
 
 generate_machine_id() {
   dd count=16 if=/dev/urandom 2>/dev/null |md5sum|sed 's/-//' > /etc/machine-id
@@ -57,7 +58,7 @@ launch_application() {
   export PULSE_SERVER=/run/pulse/native
   export PULSE_LATENCY_MSEC=30
   export QT_GRAPHICSSYSTEM=native
-  exec sudo -HEu ${APP_USER} ${EXECUTABLE:-$APPLICATION}
+  exec sudo -HEu ${APP_USER} ${EXECUTABLE:-$APPLICATION} $@
 }
 
 case "$1" in
@@ -75,6 +76,6 @@ case "$1" in
     generate_machine_id
     create_user
     grant_access_to_video_devices
-    launch_application
+    launch_application $@
     ;;
 esac
