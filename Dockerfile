@@ -3,7 +3,7 @@ MAINTAINER Dmitrii Ageev <d.ageev@gmail.com>
 
 # Set environment
 ENV APPLICATION "firefox"
-ENV VERSION "58.0.2"
+ENV VERSION "57.0.2"
 ENV FILE "firefox-${VERSION}.tar.bz2"
 ENV LINK "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${VERSION}/linux-x86_64/en-GB/${FILE}"
 ENV EXECUTABLE "/firefox/firefox"
@@ -71,6 +71,7 @@ RUN rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 COPY files/wrapper /sbin/wrapper
 COPY files/entrypoint.sh /sbin/entrypoint.sh
 COPY files/pulse-client.conf /etc/pulse/client.conf
+COPY files/hosts /etc/hosts
 
 # Proceed to the entry point
 ENTRYPOINT ["/sbin/entrypoint.sh"]
