@@ -27,7 +27,7 @@ uninstall_application() {
 create_user() {
   # create group with USER_GID
   if ! getent group ${APP_USER} >/dev/null; then
-    groupadd -f -g ${USER_GID} ${APP_USER} >/dev/null 2>&1
+    groupadd -f -g ${USER_GID} ${APP_USER} 2>&1 >/dev/null
   fi
 
   # create user with USER_UID
@@ -47,7 +47,7 @@ grant_access_to_video_devices() {
         VIDEO_GROUP=${APPLICATION}video
         groupadd -g ${VIDEO_GID} ${VIDEO_GROUP} 2>&1 >/dev/null
       fi
-      gpasswd -a ${APP_USER} ${VIDEO_GROUP}
+      gpasswd -a ${APP_USER} ${VIDEO_GROUP} 2>&1 >/dev/null
       break
     fi
   done
@@ -58,6 +58,7 @@ launch_application() {
   export PULSE_SERVER=/run/pulse/native
   export PULSE_LATENCY_MSEC=30
   export QT_GRAPHICSSYSTEM=native
+  echo "127.0.0.1 docker" >> /etc/hosts
   exec sudo -HEu ${APP_USER} ${EXECUTABLE:-$APPLICATION} $@
 }
 
